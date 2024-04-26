@@ -43,7 +43,7 @@ const Navbar = () => {
         </div>
         <Link
           to="/"
-          className="text-xl md:text-2xl font-semibold cursor-pointer hover:text-sky-500 duration-200"
+          className="text-xl md:text-2xl font-semibold cursor-pointer text-emerald-500 hover:text-black duration-200"
         >
           TouristTrove
         </Link>
@@ -54,8 +54,8 @@ const Navbar = () => {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "text-sky-500 font-medium border-b-2 border-sky-500"
-                : "text-black hover:text-sky-500 duration-200"
+                ? "text-emerald-500 font-medium border-b-2 border-emerald-500"
+                : "text-black hover:text-emerald-500 duration-200"
             }
           >
             Home
@@ -64,8 +64,8 @@ const Navbar = () => {
             to="/allTouristsSpot"
             className={({ isActive }) =>
               isActive
-                ? "text-sky-500 font-medium border-b-2 border-sky-500"
-                : "text-black hover:text-sky-500 duration-200"
+                ? "text-emerald-500 font-medium border-b-2 border-emerald-500"
+                : "text-black hover:text-emerald-500 duration-200"
             }
           >
             All Tourists Spots
@@ -74,8 +74,8 @@ const Navbar = () => {
             to="/addTouristsSpot"
             className={({ isActive }) =>
               isActive
-                ? "text-sky-500 font-medium border-b-2 border-sky-500"
-                : "text-black hover:text-sky-500 duration-200"
+                ? "text-emerald-500 font-medium border-b-2 border-emerald-500"
+                : "text-black hover:text-emerald-500 duration-200"
             }
           >
             Add Tourists Spot
@@ -84,8 +84,8 @@ const Navbar = () => {
             to="/myList"
             className={({ isActive }) =>
               isActive
-                ? "text-sky-500 font-medium border-b-2 border-sky-500"
-                : "text-black hover:text-sky-500 duration-200"
+                ? "text-emerald-500 font-medium border-b-2 border-emerald-500"
+                : "text-black hover:text-emerald-500 duration-200"
             }
           >
             My List
@@ -95,14 +95,14 @@ const Navbar = () => {
       <div className="navbar-end gap-4 ">
         <Link
           to="/signIn"
-          className="rounded px-4 md:px-6 py-1.5 md:py-2.5 overflow-hidden group bg-sky-500 relative hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-400 text-white transition-all ease-out duration-300"
+          className="rounded px-4 md:px-6 py-1.5 md:py-2.5 overflow-hidden group bg-emerald-500 relative hover:bg-gradient-to-r hover:from-emerald-500 hover:to-emerald-400 text-white transition-all ease-out duration-300"
         >
           <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
           <span className="relative font-medium lg:text-[16px]">Sign In</span>
         </Link>
         <Link
           to="/signUp"
-          className="rounded px-4 md:px-6 py-1.5 md:py-2.5 overflow-hidden group bg-sky-500 relative hover:bg-gradient-to-r hover:from-sky-500 hover:to-sky-400 text-white transition-all ease-out duration-300"
+          className="rounded px-4 md:px-6 py-1.5 md:py-2.5 overflow-hidden group bg-emerald-500 relative hover:bg-gradient-to-r hover:from-emerald-500 hover:to-emerald-400 text-white transition-all ease-out duration-300"
         >
           <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
           <span className="relative font-medium lg:text-[16px]">Sign Up</span>
