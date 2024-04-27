@@ -2,10 +2,42 @@ import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+// import { useContext, } from "react";
 import { MdAlternateEmail } from "react-icons/md";
+// import { AuthContext } from "../providers/FirebaseAuthProviders";
+import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
+import UseAuth from "../hooks/UseAuth";
+// import UseAuth from "../hooks/UseAuth";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const { createUser } = UseAuth();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    if (password.length < 6) {
+      toast.error("Password Must be used 6 characters");
+      return;
+    }
+
+    createUser(email, password)
+      .then((result) => {
+        console.log(result);
+        toast.success("Sign Up Successful");
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error("Email already in use");
+      });
+  };
+
   return (
     <div className="flex justify-between my-24">
       <div className="hidden lg:flex items-center justify-center bg-white text-black">
@@ -242,9 +274,9 @@ const SignUp = () => {
       <div className="w-full border rounded-lg lg:w-1/2 flex items-center justify-center">
         <div className="max-w-lg w-full p-5 py-8 md:py-16">
           <h1 className="text-xl md:text-4xl font-semibold mb-6 text-black text-center">
-            Please sign Up
+            Please Sign Up
           </h1>
-          <form className="space-y-5">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
             <div>
               <label className="block text-[16px] font-medium text-gray-700">
                 Photo_URL
@@ -253,8 +285,14 @@ const SignUp = () => {
                 type="text"
                 placeholder="Photo_URL"
                 name="photo"
-                className="mt-1 p-3 md:p-4 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                className="mt-1 p-3 mb-1 md:p-4 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-300 transition-colors duration-300"
+                {...register("photo", { required: true })}
               />
+              {errors.fullName && (
+                <span className="text-red-500 text-[14px]">
+                  This field is required
+                </span>
+              )}
             </div>
             <div>
               <label className="block text-[16px] font-medium text-gray-700">
@@ -262,36 +300,52 @@ const SignUp = () => {
               </label>
               <input
                 type="text"
-                name="username"
-                placeholder="Enter your Full name"
-                className="mt-1 p-3 md:p-4 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                name="fullName"
+                placeholder="Enter your Full Name"
+                className="mt-1 mb-1 p-3 md:p-4 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-300 transition-colors duration-300"
+                // {...register("fullName")}
+                {...register("fullName", { required: true })}
               />
+              {errors.fullName && (
+                <span className="text-red-500 text-[14px]">
+                  This field is required
+                </span>
+              )}
             </div>
             <div>
               <label className="block text-[16px] font-medium text-gray-700">
                 Email
               </label>
-              <div className="relative flex items-center">
+              <div className="relative flex items-center mb-1">
                 <input
                   type="text"
-                  placeholder="Enter your Email"
-                  className="mt-1 p-3 md:p-4 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                  name="email"
+                  placeholder="Enter your Email Address"
+                  className="mt-1 p-3 md:p-4 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-300 transition-colors duration-300"
+                  {...register("email", { required: true })}
                 />
+
                 <span className="absolute right-3 md:text-xl">
                   <MdAlternateEmail />
                 </span>
               </div>
+              {errors.email && (
+                <span className="text-red-500 text-[14px]">
+                  This field is required
+                </span>
+              )}
             </div>
             <div>
               <label className="block text-[16px] font-medium text-gray-700">
                 Password
               </label>
-              <div className="relative flex items-center">
+              <div className="relative flex items-center mb-1">
                 <input
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="Password 6+ characters"
-                  className="mt-1 p-3 md:p-4 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 transition-colors duration-300"
+                  className="mt-1 p-3 md:p-4 w-full border rounded-md focus:border-gray-200 focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-gray-300 transition-colors duration-300"
+                  {...register("password", { required: true })}
                 />
                 <span
                   className="absolute right-3 cursor-pointer md:text-xl"
@@ -300,18 +354,23 @@ const SignUp = () => {
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
                 </span>
               </div>
+              {errors.password && (
+                <span className="text-red-500 text-[14px]">
+                  This field is required
+                </span>
+              )}
             </div>
             <div>
               <button
                 type="submit"
-                className="w-full bg-black font-semibold text-white p-3 md:p-4 rounded-md hover:bg-emerald-500 focus:outline-none transition-colors duration-300"
+                className="w-full bg-emerald-500 font-semibold text-white p-3 md:p-4 rounded-md hover:bg-black focus:outline-none transition-colors duration-300"
               >
                 Sign Up
               </button>
             </div>
           </form>
-          <div className="mt-4 font-medium text-gray-700 text-center">
-            <p>
+          <div className="mt-5 text-center">
+            <p className="font-medium text-gray-800">
               Already have an account?
               <Link
                 to="/signIn"
@@ -323,6 +382,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <Toaster position="top-center" reverseOrder={true} />
     </div>
   );
 };
