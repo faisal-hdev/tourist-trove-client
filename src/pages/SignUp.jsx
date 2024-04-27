@@ -2,13 +2,10 @@ import { Link } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-// import { useContext, } from "react";
 import { MdAlternateEmail } from "react-icons/md";
-// import { AuthContext } from "../providers/FirebaseAuthProviders";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import UseAuth from "../hooks/UseAuth";
-// import UseAuth from "../hooks/UseAuth";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -27,6 +24,20 @@ const SignUp = () => {
       return;
     }
 
+    if (!/^(?=.*[a-z])(?=.*[A-Z]).+$/.test(password)) {
+      toast.error("Please Must have an Uppercase and Lowercase letter");
+      return;
+    }
+    // if (
+    //   !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(
+    //     password
+    //   )
+    // ) {
+    //   toast.error(
+    //     "password must be have at least 6 characters,a capital & spacial letter,one number"
+    //   );
+    //   return;
+    // }
     createUser(email, password)
       .then((result) => {
         console.log(result);

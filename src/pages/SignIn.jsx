@@ -1,24 +1,20 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
-// import { useContext,  } from "react";
 import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { MdAlternateEmail } from "react-icons/md";
-// import { AuthContext } from "../providers/FirebaseAuthProviders";
-import { useForm } from "react-hook-form";
-import toast, { Toaster } from "react-hot-toast";
 import UseAuth from "../hooks/UseAuth";
+import { useForm } from "react-hook-form";
+import { FaEyeSlash } from "react-icons/fa";
+import toast, { Toaster } from "react-hot-toast";
+import { MdAlternateEmail } from "react-icons/md";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { signInUser } = UseAuth();
-  const { googleLogin } = UseAuth();
+  const { signInUser, googleLogin, githubLogin } = UseAuth();
 
   const {
     register,
     handleSubmit,
-    // watch,
     formState: { errors },
   } = useForm();
 
@@ -33,13 +29,13 @@ const SignIn = () => {
       })
       .catch((error) => {
         console.error(error);
-        //auth/invalid-credential
         toast.error("Email & password invalid");
       });
   };
 
   // google login
   const handleGoogleLogin = () => {
+    console.log("hello");
     googleLogin()
       .then((result) => {
         console.log(result.user);
@@ -53,7 +49,15 @@ const SignIn = () => {
 
   // github login
   const handleGithubLogin = () => {
-    console.log("hello");
+    githubLogin()
+      .then((result) => {
+        console.log(result.user);
+        toast.success("Login Successful");
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error(error.message);
+      });
   };
 
   return (
