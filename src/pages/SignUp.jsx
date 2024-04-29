@@ -50,7 +50,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex justify-between my-24">
+    <div className="flex justify-between my-24 max-w-[1240px] mx-auto max-lg:px-5">
       <div className="hidden lg:flex items-center justify-center bg-white text-black">
         <div className="max-w-md text-center">
           <svg

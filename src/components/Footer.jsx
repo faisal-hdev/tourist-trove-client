@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-gray-100 via-[#a7f3d0] to-gray-100">
-      <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
+      <div className="max-w-[1240px] mx-auto px-5 lg:px-0 py-24">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <Link

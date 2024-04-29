@@ -2,13 +2,17 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../hooks/UseAuth";
+import toast, { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
   const { logOut, user } = UseAuth();
+  const handleLogOut = () => {
+    logOut().then(toast.success("Sign Out Successful")).catch();
+  };
   return (
     <div className="navbar bg-base-100 shadow-sm lg:py-6 px-[16px] md:px-[40px] lg:px-[90px]">
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown z-30">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -77,6 +81,18 @@ const Navbar = () => {
                 My List
               </NavLink>
             </li>
+            <li className="font-medium">
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-emerald-500 font-medium border-b-2 border-emerald-500"
+                    : "text-black hover:text-emerald-500 duration-200"
+                }
+              >
+                Contact
+              </NavLink>
+            </li>
           </ul>
         </div>
         <Link
@@ -128,9 +144,19 @@ const Navbar = () => {
           >
             My List
           </NavLink>
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              isActive
+                ? "text-emerald-500 font-medium border-b-2 border-emerald-500"
+                : "text-black hover:text-emerald-500 duration-200"
+            }
+          >
+            Contact
+          </NavLink>
         </ul>
       </div>
-      <div className="navbar-end gap-4 ">
+      <div className="navbar-end gap-4 z-30">
         {user ? (
           <div className="dropdown dropdown-end ml-3">
             <div
@@ -159,7 +185,7 @@ const Navbar = () => {
                 <a className="font-medium">Maria Grande</a>
               </li>
               <li>
-                <button className="font-medium" onClick={logOut}>
+                <button className="font-medium" onClick={handleLogOut}>
                   Sign Out
                 </button>
               </li>
@@ -188,6 +214,7 @@ const Navbar = () => {
           </>
         )}
       </div>
+      <Toaster position="top-center" reverseOrder={true} />
     </div>
   );
 };
