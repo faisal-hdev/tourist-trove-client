@@ -1,13 +1,10 @@
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import sl1 from "./../assets/SliderImg/1.jpg";
-// import sl2 from "./../assets/SliderImg/2.jpg";
-// import sl3 from "./../assets/SliderImg/3.jpg";
+import img1 from "../assets/tSpot-imgs/1.jpg";
 
 const BannerSlider = () => {
   return (
-    // <div className="h-[640px] bg-gradient-to-r from-[#F9F3F0] from-10% via-[#FCE7DC] via-30% to-[#F9F3F0] to-90% dark:bg-gradient-to-r dark:from-[#f2f2d8] dark:from-10% dark:via-[#FCE7DC] dark:via-30% dark:to-[#fae1d4]">
     <div className="py-12 lg:h-[560px] mb-10 bg-gradient-to-r flex justify-center items-center from-gray-100 via-[#a7f3d0] to-gray-100">
       <Swiper
         spaceBetween={30}
@@ -55,7 +52,7 @@ const BannerSlider = () => {
               </div>
               <div className="flex items-center justify-center mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
                 <img
-                  src={sl1}
+                  src={img1}
                   alt=""
                   className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 rounded-2xl"
                 />
@@ -95,7 +92,7 @@ const BannerSlider = () => {
               </div>
               <div className="flex items-center justify-center mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
                 <img
-                  src={sl1}
+                  src={img1}
                   alt=""
                   className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 rounded-2xl"
                 />
@@ -135,7 +132,7 @@ const BannerSlider = () => {
               </div>
               <div className="flex items-center justify-center mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
                 <img
-                  src={sl1}
+                  src={img1}
                   alt=""
                   className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128 rounded-2xl"
                 />
