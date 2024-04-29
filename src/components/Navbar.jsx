@@ -165,10 +165,7 @@ const Navbar = () => {
               className="btn btn-ghost flex items-center btn-circle avatar"
             >
               <div className="w-10 md:w-12 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                />
+                <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
               </div>
             </div>
             <ul
@@ -182,7 +179,7 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <a className="font-medium">Maria Grande</a>
+                <a className="font-medium">{user.displayName}</a>
               </li>
               <li>
                 <button className="font-medium" onClick={handleLogOut}>

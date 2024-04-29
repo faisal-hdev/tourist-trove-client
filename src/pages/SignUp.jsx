@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
@@ -9,7 +9,9 @@ import UseAuth from "../hooks/UseAuth";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { createUser } = UseAuth();
+  const { createUser, updateUserProfile } = UseAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
@@ -18,7 +20,7 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    const { email, password } = data;
+    const { email, password, photo, fullName } = data;
     if (password.length < 6) {
       toast.error("Password Must be used 6 characters");
       return;
@@ -38,10 +40,15 @@ const SignUp = () => {
     //   );
     //   return;
     // }
-    createUser(email, password)
+
+    // create user and update profile
+    createUser(email, password, photo, fullName)
       .then((result) => {
         console.log(result);
         toast.success("Sign Up Successful");
+        updateUserProfile(fullName, photo).then(() => {
+          navigate(location?.state ? "/" : "/");
+        });
       })
       .catch((error) => {
         console.error(error);

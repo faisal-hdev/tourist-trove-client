@@ -1,16 +1,18 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 import { FaEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import UseAuth from "../hooks/UseAuth";
 import { useForm } from "react-hook-form";
 import { FaEyeSlash } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import { MdAlternateEmail } from "react-icons/md";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
   const { signInUser, googleLogin, githubLogin } = UseAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const {
     register,
@@ -19,12 +21,12 @@ const SignIn = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     const { email, password } = data;
 
     signInUser(email, password)
       .then((result) => {
         console.log(result);
+        navigate(location?.state ? location.state : "/");
         toast.success("Sign in Successful");
       })
       .catch((error) => {
@@ -35,10 +37,10 @@ const SignIn = () => {
 
   // google login
   const handleGoogleLogin = () => {
-    console.log("hello");
     googleLogin()
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location.state : "/");
         toast.success("Login Successful");
       })
       .catch((error) => {
@@ -52,6 +54,7 @@ const SignIn = () => {
     githubLogin()
       .then((result) => {
         console.log(result.user);
+        navigate(location?.state ? location.state : "/");
         toast.success("Login Successful");
       })
       .catch((error) => {
@@ -131,7 +134,7 @@ const SignIn = () => {
             <div className="grid md:grid-cols-2 gap-2">
               <div>
                 <button
-                  onClick={() => handleGoogleLogin()}
+                  onClick={handleGoogleLogin}
                   className="text-center w-full font-medium text-white bg-gray-800 p-3 md:p-4 duration-300 rounded-md hover:bg-amber-500"
                 >
                   Google
@@ -139,7 +142,7 @@ const SignIn = () => {
               </div>
               <div>
                 <button
-                  onClick={() => handleGithubLogin()}
+                  onClick={handleGithubLogin}
                   className="text-center w-full font-medium text-white bg-gray-800 p-3 md:p-4 duration-300 rounded-md hover:bg-sky-500"
                 >
                   Github
