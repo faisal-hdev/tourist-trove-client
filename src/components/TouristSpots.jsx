@@ -5,13 +5,14 @@ const TouristSpots = () => {
   return (
     <div>
       <div className="text-center">
-        <h2 className="text-2xl md:text-4xl text-center font-semibold mt-5 md:mt-14">
-          Trending Tourist Spots
+        <h2 className="text-2xl md:text-4xl text-center font-semibold mt-6 md:mt-12 lg:mt-24">
+          Trending Tourist Spots_
         </h2>
         <div className="flex justify-center">
-          <p className="py-3 w-full md:w-[760px] md:text-lg">
-            Discover the mystique of Iceland's mesmerizing Blue Lagoon or
-            venture into Peru's enigmatic ancient ruins at Machu Picchu.
+          <p className="py-2 md:py-4 w-full md:w-[760px] md:text-lg">
+            Discover the world's hottest destinations, from bustling cityscapes
+            to serene natural wonders, beckoning travelers with their
+            irresistible charm and allure.
           </p>
         </div>
       </div>
