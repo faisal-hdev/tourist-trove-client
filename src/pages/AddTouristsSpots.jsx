@@ -62,7 +62,7 @@ const AddTouristsSpots = () => {
   };
 
   return (
-    <div className="max-w-[1240px] h-scree mx-auto max-lg:px-5 py-6 md:py-12 lg:py-24">
+    <div className="max-w-[1240px] mx-auto max-lg:px-5 py-6 md:py-12 lg:py-24">
       <div>
         {/* Heading */}
         <div className="text-center mb-10">

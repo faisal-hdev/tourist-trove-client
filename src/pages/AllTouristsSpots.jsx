@@ -5,10 +5,10 @@ import TourSpotCard from "../components/TourSpotCard";
 const AllTouristsSpots = () => {
   const tourSpots = useLoaderData();
   return (
-    <div className="max-w-[1240px] mx-auto max-lg:px-5">
+    <div className="max-w-[1240px] mx-auto max-lg:px-5 py-6 md:py-12 lg:py-24">
       <div>
         <div className="text-center">
-          <h2 className="text-2xl md:text-4xl text-center font-semibold mt-6 md:mt-12 lg:mt-24">
+          <h2 className="text-2xl md:text-4xl text-center font-semibold">
             All Tourist Spots_ {tourSpots.length}
           </h2>
           <div className="flex justify-center">
