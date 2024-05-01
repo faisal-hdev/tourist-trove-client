@@ -15,7 +15,7 @@ const AddTouristsSpots = () => {
     const seasonality = e.target.seasonality.value;
     const userName = e.target.userName.value;
     const shortDescription = e.target.shortDescription.value;
-    const info = {
+    const newTourSpot = {
       image,
       spotName,
       countryName,
@@ -28,7 +28,23 @@ const AddTouristsSpots = () => {
       visitors,
       shortDescription,
     };
-    console.log(info);
+    console.log(newTourSpot);
+
+    // send data to server
+    fetch("http://localhost:5000/tourSpot", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newTourSpot),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          alert("data DB a send hoise");
+        }
+      });
   };
 
   return (
