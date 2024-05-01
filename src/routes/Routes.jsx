@@ -1,14 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../layout/MainLayout";
-import ErrorPage from "../pages/ErrorPage";
-import Home from "../pages/Home";
 import AllTouristsSpots from "../pages/AllTouristsSpots";
 import AddTouristsSpots from "../pages/AddTouristsSpots";
+import MainLayout from "../layout/MainLayout";
+import ErrorPage from "../pages/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
+import Contact from "../pages/Contact";
 import MyList from "../pages/MyList";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import PrivateRoute from "./PrivateRoute";
-import Contact from "../pages/Contact";
+import Home from "../pages/Home";
 
 const routes = createBrowserRouter([
   {

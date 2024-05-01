@@ -1,10 +1,13 @@
 import { useState } from "react";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
+import UseAuth from "../hooks/UseAuth";
 
 const AddTouristsSpots = () => {
   const [visitors, setVisitors] = useState("1000 visitors");
   const [travelTime, setTravelTime] = useState("30 days");
+  const { user } = UseAuth();
+  console.log(user.email);
 
   const handleAddTourSpot = (e) => {
     e.preventDefault();
@@ -17,9 +20,11 @@ const AddTouristsSpots = () => {
     const location = form.location.value;
     const seasonality = form.seasonality.value;
     const userName = form.userName.value;
+    const email = user.email;
     const shortDescription = form.shortDescription.value;
     const newTourSpot = {
       image,
+      email,
       spotName,
       countryName,
       location,
@@ -45,7 +50,7 @@ const AddTouristsSpots = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.insertedId) {
+        if (data?.insertedId) {
           Swal.fire({
             title: "Success!",
             text: "TourSpot added Successfully",

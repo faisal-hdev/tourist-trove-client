@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 const TourSpotCard = ({ tourSpot }) => {
   const {
+    _id,
     image,
     spotName,
     location,
@@ -13,7 +14,12 @@ const TourSpotCard = ({ tourSpot }) => {
     // visitors,
     // shortDescription,
   } = tourSpot;
-  console.log(tourSpot);
+
+  const handleViewDetails = (_id) => {
+    console.log(_id);
+  };
+
+  // console.log(tourSpot);
   return (
     <div className="duration-200 p-1 md:p-3 rounded-md hover:shadow-sm  text-gray-700">
       <img
@@ -27,7 +33,10 @@ const TourSpotCard = ({ tourSpot }) => {
         </span>
         <h2 className="text-xl font-semibold tracking-wide">{spotName}</h2>
       </div>
-      <button className="group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-2 text-emerald-600 active:text-emerald-500">
+      <button
+        onClick={() => handleViewDetails(_id)}
+        className="group relative inline-flex items-center overflow-hidden rounded border border-current px-5 py-2 text-emerald-600 active:text-emerald-500"
+      >
         <span className="absolute -start-full transition-all group-hover:start-4">
           <svg
             className="size-4 rtl:rotate-180"
