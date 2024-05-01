@@ -30,6 +30,7 @@ const AddTouristsSpots = () => {
     };
     console.log(info);
   };
+
   return (
     <div className="max-w-[1240px] h-scree mx-auto max-lg:px-5 py-6 md:py-12 lg:py-24">
       <div className="">
@@ -83,51 +84,7 @@ const AddTouristsSpots = () => {
                 id="averageCost"
                 name="averageCost"
               />
-              <label
-                className="block mt-4 mb-2 font-medium"
-                htmlFor="travelTime"
-              >
-                Travel time
-              </label>
-              <select
-                onChange={(e) => setTravelTime(e.target.value)}
-                name="travelTime"
-                id="travelTime"
-                className="w-full p-2 md:p-3 lg:p-4 border rounded-md focus:outline-emerald-100"
-                type="text"
-                placeholder="Select Travel time"
-              >
-                <option value="7 days" selected>
-                  7 days
-                </option>
-                <option value="15 days" selected>
-                  15 days
-                </option>
-                <option value="20 days" selected>
-                  20 days
-                </option>
-                <option value="30 days" selected>
-                  30 days
-                </option>
-              </select>
-              <label
-                className="block mt-4 mb-2 font-medium"
-                htmlFor="userEmail"
-              >
-                User Email
-              </label>
-              <input
-                required
-                className="w-full p-2 md:p-3 lg:p-4 border rounded-md focus:outline-emerald-100"
-                type="text"
-                placeholder="Enter Your Email"
-                id="userEmail"
-                name="userEmail"
-              />
-            </div>
-            {/* Right side */}
-            <div className="flex-1">
-              <label className="block mb-2  font-medium" htmlFor="spotName">
+              <label className="block mb-2 mt-4 font-medium" htmlFor="spotName">
                 Tourists spot name
               </label>
               <input
@@ -152,10 +109,10 @@ const AddTouristsSpots = () => {
                 id="location"
                 name="location"
               />
-              <label
-                className="block mb-2 mt-4  font-medium"
-                htmlFor="seasonality"
-              >
+            </div>
+            {/* Right side */}
+            <div className="flex-1">
+              <label className="block mb-2  font-medium" htmlFor="seasonality">
                 Seasonality
               </label>
               <input
@@ -165,6 +122,31 @@ const AddTouristsSpots = () => {
                 placeholder="Summer or Winter"
                 id="seasonality"
                 name="seasonality"
+              />
+              <label className="block mt-4 mb-2 font-medium" htmlFor="userName">
+                User Name
+              </label>
+              <input
+                required
+                className="w-full p-2 md:p-3 lg:p-4 border rounded-md focus:outline-emerald-100"
+                type="text"
+                placeholder="Enter Your Name"
+                id="userName"
+                name="userName"
+              />
+              <label
+                className="block mt-4 mb-2 font-medium"
+                htmlFor="userEmail"
+              >
+                User Email
+              </label>
+              <input
+                required
+                className="w-full p-2 md:p-3 lg:p-4 border rounded-md focus:outline-emerald-100"
+                type="text"
+                placeholder="Enter Your Email"
+                id="userEmail"
+                name="userEmail"
               />
               <label
                 className="block mt-4 mb-2 font-medium"
@@ -196,17 +178,33 @@ const AddTouristsSpots = () => {
                   1000 Visitors
                 </option>
               </select>
-              <label className="block mt-4 mb-2 font-medium" htmlFor="userName">
-                User Name
+              <label
+                className="block mt-4 mb-2 font-medium"
+                htmlFor="travelTime"
+              >
+                Travel time
               </label>
-              <input
-                required
+              <select
+                onChange={(e) => setTravelTime(e.target.value)}
+                name="travelTime"
+                id="travelTime"
                 className="w-full p-2 md:p-3 lg:p-4 border rounded-md focus:outline-emerald-100"
                 type="text"
-                placeholder="Enter Your Name"
-                id="userName"
-                name="userName"
-              />
+                placeholder="Select Travel time"
+              >
+                <option value="7 days" selected>
+                  7 days
+                </option>
+                <option value="15 days" selected>
+                  15 days
+                </option>
+                <option value="20 days" selected>
+                  20 days
+                </option>
+                <option value="30 days" selected>
+                  30 days
+                </option>
+              </select>
               <label
                 className="block mb-2 mt-4 font-medium"
                 htmlFor="shortDescription"
@@ -228,9 +226,6 @@ const AddTouristsSpots = () => {
               />
             </div>
           </div>
-          {/* <div className="flex justify-center items-center">
-          
-          </div> */}
         </form>
       </div>
     </div>
