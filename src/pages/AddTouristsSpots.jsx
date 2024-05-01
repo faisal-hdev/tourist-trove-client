@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Swal from "sweetalert2/dist/sweetalert2.js";
+import "sweetalert2/src/sweetalert2.scss";
 
 const AddTouristsSpots = () => {
   const [visitors, setVisitors] = useState("1000 visitors");
@@ -6,15 +8,16 @@ const AddTouristsSpots = () => {
 
   const handleAddTourSpot = (e) => {
     e.preventDefault();
-    const image = e.target.image.value;
-    const countryName = e.target.countryName.value;
-    const averageCost = e.target.averageCost.value;
-    const userEmail = e.target.userEmail.value;
-    const spotName = e.target.spotName.value;
-    const location = e.target.location.value;
-    const seasonality = e.target.seasonality.value;
-    const userName = e.target.userName.value;
-    const shortDescription = e.target.shortDescription.value;
+    const form = e.target;
+    const image = form.image.value;
+    const countryName = form.countryName.value;
+    const averageCost = form.averageCost.value;
+    const userEmail = form.userEmail.value;
+    const spotName = form.spotName.value;
+    const location = form.location.value;
+    const seasonality = form.seasonality.value;
+    const userName = form.userName.value;
+    const shortDescription = form.shortDescription.value;
     const newTourSpot = {
       image,
       spotName,
@@ -28,6 +31,7 @@ const AddTouristsSpots = () => {
       visitors,
       shortDescription,
     };
+    form.reset();
     console.log(newTourSpot);
 
     // send data to server
@@ -42,14 +46,19 @@ const AddTouristsSpots = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          alert("data DB a send hoise");
+          Swal.fire({
+            title: "Success!",
+            text: "TourSpot added Successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
         }
       });
   };
 
   return (
     <div className="max-w-[1240px] h-scree mx-auto max-lg:px-5 py-6 md:py-12 lg:py-24">
-      <div className="">
+      <div>
         {/* Heading */}
         <div className="text-center mb-10">
           <h3 className="text-2xl md:text-4xl text-center font-semibold ">

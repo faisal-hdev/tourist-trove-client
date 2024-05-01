@@ -22,6 +22,7 @@ const routes = createBrowserRouter([
       },
       {
         path: "/allTouristsSpot",
+        loader: () => fetch("http://localhost:5000/tourSpot"),
         element: <AllTouristsSpots />,
       },
       {
